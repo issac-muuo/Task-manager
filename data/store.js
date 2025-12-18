@@ -4,7 +4,7 @@ export function createStore(initialState) {
   let future = [];
 
   return {
-    getSate() {
+    getState() {
       return state;
     },
 
@@ -24,7 +24,7 @@ export function createStore(initialState) {
 
       state = {
         ...state,
-        tasks: [...state.task, newTask],
+        tasks: [...state.tasks, newTask]
       };
     },
 
@@ -43,16 +43,16 @@ export function createStore(initialState) {
   };
 }
 
-const store = createStore({ task: [] });
+// const store = createStore({ task: [] });
 
-store.setState({ task: ["learn js"] });
-console.log(store.getSate());
+// store.setState({ task: ["learn js"] });
+// console.log(store.getSate());
 
-store.addTask("learn closure");
-store.addTask("practise async");
-console.log(store.getSate());
+// store.addTask("learn closure");
+// store.addTask("practise async");
+// console.log(store.getSate());
 
-store.addTask("A");
-store.addTask("B");
-store.undo();
-console.log(store.getSate());
+// store.addTask("A");
+// store.addTask("B");
+// store.undo();
+// console.log(store.getSate());
