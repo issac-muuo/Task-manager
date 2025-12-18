@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-  <script type="module" src="data/store.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Task Manager</h1>
+
+    <input id="task-input" placeholder="enter a task" type="text" />
+    <button id="add-btn">Add</button>
+    <button id="undo-btn">Undo</button>
+    <button id="redo-btn">redo</button>
+
+    <ul id="task-list"></ul>
+    <script type="module" src="main.js"></script>
+  </body>
 </html>

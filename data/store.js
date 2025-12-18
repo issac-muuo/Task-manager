@@ -1,5 +1,7 @@
 export function createStore(initialState) {
   let state = initialState;
+  let history = [];
+  let future = [];
 
   return {
     getSate() {
@@ -11,8 +13,9 @@ export function createStore(initialState) {
     },
 
     addTask(text) {
-      history.pushState(state); //save old atate
-      
+      history.push(state); //save old atate
+      future = [];
+
       const newTask = {
         id: Date.now(),
         text: text,
@@ -21,8 +24,21 @@ export function createStore(initialState) {
 
       state = {
         ...state,
-        task: [...state.task, newTask],
+        tasks: [...state.task, newTask],
       };
+    },
+
+    undo() {
+      if (history.length === 0) return;
+      future.push(state);
+      state = history.pop();
+    },
+
+    redo() {
+      if (future.length === 0) return;
+
+      history.push(state);
+      state = future.pop();
     },
   };
 }
@@ -34,4 +50,9 @@ console.log(store.getSate());
 
 store.addTask("learn closure");
 store.addTask("practise async");
+console.log(store.getSate());
+
+store.addTask("A");
+store.addTask("B");
+store.undo();
 console.log(store.getSate());
